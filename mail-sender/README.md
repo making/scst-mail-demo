@@ -1,5 +1,9 @@
 Configure `demo.to` and `demo.from` in `application.properties`.
 
+## Run Locally
+
+Configure your SMTPS server in `application-default.properties`.
+
 ## Unit Test with Spring Cloud Connectors
 
 You can run unit tests using Spring Cloud Connectors
