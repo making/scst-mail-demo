@@ -4,6 +4,29 @@ Configure `demo.to` and `demo.from` in `application.properties`.
 
 Configure your SMTP server in `application-default.properties`.
 
+#### In case of GMail
+
+```
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=<Gmail Account>
+spring.mail.password=<Gmail Password>
+
+demo.to=<Your Email>
+```
+
+#### In case of Amazon SES
+
+``` properties
+spring.mail.host=email-smtp.us-west-2.amazonaws.com
+spring.mail.port=25
+spring.mail.username=<SNS Username>
+spring.mail.password=<SNS Password>
+
+demo.from=<Email in SES Domain>
+demo.to=<Your Email>
+```
+
 ## Unit Test with Spring Cloud Connectors
 
 You can run unit tests using Spring Cloud Connectors
