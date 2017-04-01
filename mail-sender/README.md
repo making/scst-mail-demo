@@ -2,14 +2,14 @@ Configure `demo.to` and `demo.from` in `application.properties`.
 
 ## Run Locally
 
-Configure your SMTPS server in `application-default.properties`.
+Configure your SMTP server in `application-default.properties`.
 
 ## Unit Test with Spring Cloud Connectors
 
 You can run unit tests using Spring Cloud Connectors
 
 ```
-export VCAP_SERVICES="{\"smtp\":[{\"credentials\":{\"uri\":\"smtp://user:password@localhost:3465\"},\"name\":\"smtp\"}]}"
+export VCAP_SERVICES="{\"smtp\":[{\"credentials\":{\"uri\":\"smtp://user:password@localhost:3025\"},\"name\":\"smtp\"}]}"
 export VCAP_APPLICATION="{}"
 export SPRING_PROFILES_ACTIVE=cloud
 ./mvnw test
@@ -18,7 +18,7 @@ export SPRING_PROFILES_ACTIVE=cloud
 This configurations is equivalent to:
 
 ```
-cf create-user-provided-service smtp -p '{"credentials":{"uri":"smtp://user:password@localhost:3465"}}'
+cf create-user-provided-service smtp -p '{"credentials":{"uri":"smtp://user:password@localhost:3025"}}'
 cf bind-service your-app smtp
 ```
 
@@ -30,18 +30,18 @@ cf bind-service your-app smtp
 cf create-service p-rabbitmq standard rabbit-binder
 ```
 
-### Create SMTPS Service
+### Create SMTP Service
 
 #### In case of GMail
 
 ```
-cf create-user-provided-service smtp-service -p '{"credentials":{"uri":"smtp://<Gmail Account>:<Gmail Password>@smtp.gmail.com:465"}}'
+cf create-user-provided-service smtp-service -p '{"credentials":{"uri":"smtp://<Gmail Account>:<Gmail Password>@smtp.gmail.com:587"}}'
 ```
 
 #### In case of Amazon SES
 
 ```
-cf create-user-provided-service smtp-service -p '{"credentials":{"uri":"smtp://<SNS Username>:<SNS Password>@email-smtp.us-west-2.amazonaws.com:465"}}'
+cf create-user-provided-service smtp-service -p '{"credentials":{"uri":"smtp://<SNS Username>:<SNS Password>@email-smtp.us-west-2.amazonaws.com:25"}}'
 ```
 
 > `demo.from` must be a verified address by Amazon SES
@@ -79,18 +79,18 @@ cf push
 cf create-service cloudamqp lemur rabbit-binder
 ```
 
-### Create SMTPS Service
+### Create SMTP Service
 
 #### In case of GMail
 
 ```
-cf create-user-provided-service smtp-service -p '{"credentials":{"uri":"smtp://<Gmail Account>:<Gmail Password>@smtp.gmail.com:465"}}'
+cf create-user-provided-service smtp-service -p '{"credentials":{"uri":"smtp://<Gmail Account>:<Gmail Password>@smtp.gmail.com:587"}}'
 ```
 
 #### In case of Amazon SES
 
 ```
-cf create-user-provided-service smtp-service -p '{"credentials":{"uri":"smtp://<SNS Username>:<SNS Password>@email-smtp.us-west-2.amazonaws.com:465"}}'
+cf create-user-provided-service smtp-service -p '{"credentials":{"uri":"smtp://<SNS Username>:<SNS Password>@email-smtp.us-west-2.amazonaws.com:25"}}'
 ```
 
 > `demo.from` must be a verified address by Amazon SES
