@@ -59,8 +59,8 @@ applications:
   - rabbit-binder
   - smtp-service
   env:
-    demo.from: hello@example.com # change me
-    demo.to: noreply@example.com # change me
+    demo.from: noreply@example.com # change me
+    demo.to: hello@example.com # change me
 ```
 
 then, `cf push`!!
@@ -107,8 +107,8 @@ applications:
   - rabbit-binder
   - smtp-service
   env:
-    demo.from: hello@example.com # change me
-    demo.to: noreply@example.com # change me
+    demo.from: noreply@example.com # change me
+    demo.to: hello@example.com # change me
 ```
 
 then, `cf push`!!
