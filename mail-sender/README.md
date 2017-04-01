@@ -6,7 +6,7 @@ Configure your SMTP server in `application-default.properties`.
 
 #### In case of GMail
 
-```
+``` properties
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587
 spring.mail.username=<Gmail Account>
