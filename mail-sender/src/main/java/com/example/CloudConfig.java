@@ -21,6 +21,7 @@ public class CloudConfig extends AbstractCloudConfig {
 		MailSender mailSender = connectionFactory().service(MailSender.class);
 		if (mailSender instanceof JavaMailSenderImpl) {
 			JavaMailSenderImpl javaMailSender = (JavaMailSenderImpl) mailSender;
+			javaMailSender.setProtocol(properties.getProtocol());
 			if (properties.getDefaultEncoding() != null) {
 				javaMailSender.setDefaultEncoding(properties.getDefaultEncoding().name());
 			}

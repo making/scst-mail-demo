@@ -2,6 +2,8 @@ package com.example;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.security.Security;
+
 import javax.mail.internet.MimeMessage;
 
 import org.junit.Rule;
@@ -14,6 +16,7 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.icegreen.greenmail.junit.GreenMailRule;
+import com.icegreen.greenmail.util.DummySSLSocketFactory;
 import com.icegreen.greenmail.util.ServerSetupTest;
 
 @RunWith(SpringRunner.class)
@@ -23,7 +26,12 @@ public class MailSenderSinkTest {
 	Sink sink;
 
 	@Rule
-	public final GreenMailRule greenMail = new GreenMailRule(ServerSetupTest.SMTP);
+	public final GreenMailRule greenMail = new GreenMailRule(ServerSetupTest.SMTPS);
+
+	static {
+		Security.setProperty("ssl.SocketFactory.provider",
+				DummySSLSocketFactory.class.getName());
+	}
 
 	@Test
 	public void sendMail() throws Exception {
