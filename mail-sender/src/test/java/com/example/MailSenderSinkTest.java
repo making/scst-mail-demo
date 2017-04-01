@@ -24,6 +24,8 @@ import com.icegreen.greenmail.util.ServerSetupTest;
 public class MailSenderSinkTest {
 	@Autowired
 	Sink sink;
+	@Autowired
+	DemoProperties demoProperties;
 
 	@Rule
 	public final GreenMailRule greenMail = new GreenMailRule(ServerSetupTest.SMTPS);
@@ -43,10 +45,10 @@ public class MailSenderSinkTest {
 		assertThat(receivedMessages[0].getSubject()).isEqualTo("Welcome!!");
 		assertThat(receivedMessages[0].getFrom().length).isEqualTo(1);
 		assertThat(receivedMessages[0].getFrom()[0].toString())
-				.isEqualTo("noreply@example.com");
+				.isEqualTo(demoProperties.getFrom());
 		assertThat(receivedMessages[0].getAllRecipients().length).isEqualTo(1);
 		assertThat(receivedMessages[0].getAllRecipients()[0].toString())
-				.isEqualTo("hello@example.com");
+				.isEqualTo(demoProperties.getTo());
 	}
 
 }

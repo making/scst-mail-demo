@@ -9,16 +9,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class MailSenderSink {
 	private final MailSender mailSender;
+	private final DemoProperties demoProperties;
 
-	public MailSenderSink(MailSender mailSender) {
+	public MailSenderSink(MailSender mailSender, DemoProperties demoProperties) {
 		this.mailSender = mailSender;
+		this.demoProperties = demoProperties;
 	}
 
 	@StreamListener(Sink.INPUT)
 	public void sendMail(String body) {
 		SimpleMailMessage email = new SimpleMailMessage();
-		email.setTo("hello@example.com");
-		email.setFrom("noreply@example.com");
+		email.setTo(demoProperties.getTo());
+		email.setFrom(demoProperties.getFrom());
 		email.setSubject("Welcome!!");
 		email.setText(body);
 		mailSender.send(email);
