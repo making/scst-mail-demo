@@ -37,7 +37,7 @@ public class MailSenderSinkTest {
 
 	@Test
 	public void sendMail() throws Exception {
-		sink.input().send(MessageBuilder.withPayload("Hello").build());
+		sink.input().send(MessageBuilder.withPayload(new Hello("Hello")).build());
 		assertThat(greenMail.waitForIncomingEmail(3000, 1)).isTrue();
 		MimeMessage[] receivedMessages = greenMail.getReceivedMessages();
 		assertThat(receivedMessages.length).isEqualTo(1);
