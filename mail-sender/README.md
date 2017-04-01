@@ -12,6 +12,7 @@ You can run unit tests using Spring Cloud Connectors
 export VCAP_SERVICES="{\"smtp\":[{\"credentials\":{\"uri\":\"smtp://user:password@localhost:3025\"},\"name\":\"smtp\"}]}"
 export VCAP_APPLICATION="{}"
 export SPRING_PROFILES_ACTIVE=cloud
+export SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_REQUIRED=false
 ./mvnw test
 ```
 
